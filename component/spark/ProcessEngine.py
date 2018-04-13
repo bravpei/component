@@ -18,7 +18,7 @@ class ProcessEngine():
             elif head["nodeName"]=="saveAsTextFile":
                 self.__saveAsTextFile(head,self.__rdd)
     def __init(self,nodeMap):
-        conf=SparkConf().setAppName(self.__appName).setMaster("local[*]")
+        conf=SparkConf().setAppName(self.__appName)
         return SparkContext(conf=conf).textFile(nodeMap["path"])
     def __flatMap(self,nodeMap,rdd):
         return rdd.flatMap(eval(nodeMap["operation"]))
